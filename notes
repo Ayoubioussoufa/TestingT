@@ -1,0 +1,15 @@
+
+// first we set the env
+// and source env/bin/activate
+// the start the project django-admin startproject name
+// asgi and wsgi are entry points of the server
+// settings global configuration for the whole project
+// urls like table of content to the whole project
+// then apps, each page will be stored in one django app ..etc
+// create a django app called core
+// migration folder, information about the database
+// admin.py is where we register our database models to be used inside of the django admin interface
+// apps, like configuration file but special only to the app
+// models, what we want to store
+// tests is where we can run automated tests and similar for the app
+// views where we define views for the app
