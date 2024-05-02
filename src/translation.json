@@ -1,0 +1,31 @@
+{
+    "nav": {
+      "en": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "game": "Game",
+        "profile": "Profile"
+      },
+      "fr": {
+        "home": "Accueil",
+        "about": "À propos",
+        "contact": "Contact",
+        "game": "Jeu",
+        "profile": "Profil"
+      }
+    },
+    "buttons": {
+      "en": {
+        "button1": "Button 1",
+        "button2": "Button 2",
+        "button3": "Button 3"
+      },
+      "fr": {
+        "button1": "Bouton 1",
+        "button2": "Bouton 2",
+        "button3": "Bouton 3"
+      }
+    }
+  }
+  
