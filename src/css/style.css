@@ -12,3 +12,22 @@ body {
         backdrop-filter: blur(3px);
     }
 }
+
+.custom {
+    transition: 0.3s background-color !important;
+    background-color: #f94ca4;
+}
+
+.custom:hover {
+    background-color: rgb(28, 161, 155) !important;
+}
+
+.linkhover {
+    transition: 0.1s background-color;
+    color: white;
+    text-align: center;
+}
+
+.linkhover:hover {
+    color: black;
+}
