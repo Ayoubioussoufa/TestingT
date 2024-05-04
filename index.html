@@ -12,9 +12,9 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- fluid to be added later on -->
-    <div class="container">
+    <div class="container-fluid">
         <!-- Name -->
-      <a class="navbar-brand fs-4 me-auto" href="#">Game's name</a>
+      <a class="navbar-brand fs-4 me-auto" href="#"><strong>Game's name</strong></a>
       <!-- SideBar -->
       <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <!-- SideBar Header -->
@@ -23,40 +23,40 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <!-- SideBar Body -->
-        <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
-          <ul class="navbar-nav justify-content-center align-items-center fs-6 flex-grow-1 pe-3">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center fs-6 flex-grow-1 pe-3 gap-2">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#"><strong>Home</strong></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Tournament</a>
+              <a class="nav-link" href="#"><strong>Tournament</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Leaderboard</a>
+                <a class="nav-link" href="#"><strong>Leaderboard</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Gameplay</a>
+                <a class="nav-link" href="#"><strong>Gameplay</strong></a>
               </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                News
+                <strong>News</strong>
               </a>
               <ul class="dropdown-menu bg-dark">
                 <li>
-                    <a class="dropdown-item text-white" href="#">Check out the latest update</a></li>
+                    <a class="dropdown-item text-white" href="#"><strong>Check out the latest update</strong></a></li>
                 <li>
-                    <a class="dropdown-item text-white" href="#">All news</a></li>
+                    <a class="dropdown-item text-white" href="#"><strong>All news</strong></a></li>
                 <li>
                 <li>
-                    <a class="dropdown-item text-white" href="#">All devblogs</a>
+                    <a class="dropdown-item text-white" href="#"><strong>All devblogs</strong></a>
                 </li>
               </ul>
             </li>
           </ul>
           <!-- Login / Sign Up -->
-          <div class="d-flex flex-column justify-content-center align-items-center gap-3 flex-lg-row">
-            <a href="#login" class="text-white text-decoration-one px-3 py-1 rounded-4 btn custom">Login</a>
-            <a href="#signup" class="text-white text-decoration-one px-3 py-1 rounded-4 btn custom">Sign Up</a>
+          <div class="d-flex flex-column justify-content-center align-items-center gap-2 flex-lg-row">
+            <a href="#login" class="text-white text-decoration-one px-3 py-1 rounded-4 btn custom"><strong>Login</strong></a>
+            <a href="#signup" class="text-white text-decoration-one px-3 py-1 rounded-4 btn custom"><strong>Sign Up</strong></a>
           </div>
         </div>
       </div>
@@ -69,9 +69,9 @@
                 </svg>
             </button>
             <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownLang">
-                <li><a class="dropdown-item linkhover" href="./src/assets/flags/fr/" hreflang="fr" class="flag-fr"><img src="./src/assets/flags/fr/fr.jpg" alt="French Flag">   FR</a></li>
-                <li><a class="dropdown-item linkhover" href="./src/assets/flags/en/" hreflang="en" class="flag-en"><img src="./src/assets/flags/en/en.jpg" alt="English Flag">   EN</a></li>
-                <li><a class="dropdown-item linkhover" href="./src/assets/flags/es/" hreflang="es" class="flag-es"><img src="./src/assets/flags/es/es.jpg" alt="Spanish Flag">   ES</a></li>
+                <li><a class="dropdown-item linkhover" href="./src/assets/flags/fr/" hreflang="fr" class="flag-fr"><img src="./src/assets/flags/fr/fr.jpg" alt="French Flag">   <strong> FR</strong></a></li>
+                <li><a class="dropdown-item linkhover" href="./src/assets/flags/en/" hreflang="en" class="flag-en"><img src="./src/assets/flags/en/en.jpg" alt="English Flag">   <strong> EN</strong></a></li>
+                <li><a class="dropdown-item linkhover" href="./src/assets/flags/es/" hreflang="es" class="flag-es"><img src="./src/assets/flags/es/es.jpg" alt="Spanish Flag">   <strong> ES</strong></a></li>
             </ul>
         </div>
     <!-- Toggle Button -->
