@@ -13,13 +13,21 @@ body {
     }
 }
 
-.custom {
+.customBack {
     transition: 0.3s background-color !important;
-    background-color: #f94ca4;
+    background-color: #5ccebe;
+}
+
+.customBack:hover {
+    background-color: #c74b71 !important;
+}
+
+.custom {
+    color: #5ccebe;
 }
 
 .custom:hover {
-    background-color: rgb(28, 161, 155) !important;
+    color:#c74b71;
 }
 
 .linkhover {
