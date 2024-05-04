@@ -1,5 +1,5 @@
 body {
-    background: url("../assets/images/theme_background.jpeg") rgba(0,0,0,0.3);
+    background: url("../assets/images/theme_background.jpeg");
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
@@ -8,7 +8,6 @@ body {
 
 @media (max-width: 991px) {
     .sidebar {
-        /* to be changed */
         background-color: 	rgba(0, 0, 0, 0.5) !important;
         backdrop-filter: blur(3px);
     }
