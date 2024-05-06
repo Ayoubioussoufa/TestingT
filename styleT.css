@@ -1,0 +1,10 @@
+/* Style for the password toggle button icon */
+.password-toggle-btn i {
+    cursor: pointer;
+  }
+  
+  /* Hide the button outline when focused */
+  .password-toggle-btn:focus {
+    outline: none;
+  }
+  
