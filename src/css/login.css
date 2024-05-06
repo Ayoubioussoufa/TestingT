@@ -1,3 +1,5 @@
+/* login page */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +21,7 @@ body {
 
 .wrapper {
     width: 420px;
+    /* height: 640px; */
     background: transparent;
     border: 2px solid rgba(135,40,90, .2);
     backdrop-filter: blur(20px);
@@ -100,6 +103,14 @@ body {
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.wrapper .btn:hover {
+    background-color: rgb(135, 64, 102);
 }
 
 .wrapper .register-link {
@@ -118,9 +129,13 @@ body {
     text-decoration: underline;
 }
 
+svg {
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background-color: #ffffff;
+}
 
-
-/*  */
 
 .linkhover {
     transition: 0.1s background-color;
@@ -140,4 +155,27 @@ body {
   .password-toggle-btn:focus {
     outline: none !important;
   }
-  
+
+
+/* loginBefore Page */
+
+.wrapper .provider-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .or-separator {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .or-separator .line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+}
+
+.wrapper .or-separator .or-text {
+  padding: 0 10px;
+}
