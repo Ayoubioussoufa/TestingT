@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 contract TournamentManager {
     // events
-    event scoresUpdated(int8 tournamentId, address player, uint wins, uint losses);
-    event tournamentCreated();
-    event playerRegistred(int8 indexed _tournamentId, address indexed player);
+    event ScoresUpdated(int8 tournamentId, address player, uint wins, uint losses);
+    event TournamentCreated();
+    event PlayerRegistred(int8 indexed tournamentIds, address indexed player);
 
     // player Struct
     struct PlayerScores {
@@ -35,43 +35,43 @@ contract TournamentManager {
     function createTournament() public {
         tournamentId++;
         tournament.push(Tournament(tournamentId, true));
-        emit tournamentCreated();
+        emit TournamentCreated();
     }
 
     // addp players to the tournament
     function registerForTournament(address player) public {
-        require(tournament[uint8(tournamentId)].isOpen == true, "Tournament is not open yet");
+        require(tournament[uint8(tournamentId)].isOpen, "Tournament is not open yet");
         playersRegistred[tournamentId].push(msg.sender);
-        emit playerRegistred(tournamentId, player);
+        emit PlayerRegistred(tournamentId, player);
     }
 
     // when player won a match
     function playerWon(address player) public {
         playerScores[tournamentId][player].wins++;
-        emit scoresUpdated(tournamentId, player, playerScores[tournamentId][player].wins, playerScores[tournamentId][player].losses);
+        emit ScoresUpdated(tournamentId, player, playerScores[tournamentId][player].wins, playerScores[tournamentId][player].losses);
     }
 
     // when player loses a match
     function playerLoss(address player) public {
         playerScores[tournamentId][player].losses++;
-        emit scoresUpdated(tournamentId, player, playerScores[tournamentId][player].wins, playerScores[tournamentId][player].losses);
+        emit ScoresUpdated(tournamentId, player, playerScores[tournamentId][player].wins, playerScores[tournamentId][player].losses);
     }
 
     // player's score in a certain tournament
-    function getPlayerScore(int8 _tournamentId, address player) public view returns (uint8 wins, uint8 losses){
-        return (playerScores[_tournamentId][player].wins, playerScores[_tournamentId][player].losses);
+    function getPlayerScore(int8 tournamentIds, address player) public view returns (uint8 wins, uint8 losses){
+        return (playerScores[tournamentIds][player].wins, playerScores[tournamentIds][player].losses);
     }
 
     // all players registred in a tournament
-    function getNumberOfPlayersRegistred(int8 _tournamentId) public view returns (uint) {
-        return playersRegistred[_tournamentId].length;
+    function getNumberOfPlayersRegistred(int8 tournamentIds) public view returns (uint) {
+        return playersRegistred[tournamentIds].length;
     }
 
     // get all player addresses, their wins and losses in that specific tournament
-    function getTournamentAllData(int8 _tournamentId) public view returns (address[] memory players, uint256[] memory wins, uint256[] memory losses) {
-        mapping(address => PlayerScores) storage scores = playerScores[_tournamentId];
+    function getTournamentAllData(int8 tournamentIds) public view returns (address[] memory players, uint256[] memory wins, uint256[] memory losses) {
+        mapping(address => PlayerScores) storage scores = playerScores[tournamentIds];
 
-        uint length = getNumberOfPlayersRegistred(_tournamentId);
+        uint length = getNumberOfPlayersRegistred(tournamentIds);
 
         players = new address[](length);
         wins = new uint[](length);
@@ -79,7 +79,7 @@ contract TournamentManager {
 
         uint8 index = 0;
         for (index; index < length;) {
-            address playerAddr = playersRegistred[_tournamentId][index];
+            address playerAddr = playersRegistred[tournamentIds][index];
             players[index] = playerAddr;
             wins[index] = scores[playerAddr].wins;
             losses[index] = scores[playerAddr].losses;
@@ -103,3 +103,5 @@ contract TournamentManager {
         }
     }
 }
+
+// still needs to be tested !

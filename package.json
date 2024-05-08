@@ -12,6 +12,8 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "solc": "^0.8.25",
+    "web3": "^4.8.0"
   }
 }
