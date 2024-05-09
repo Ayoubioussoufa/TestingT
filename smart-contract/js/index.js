@@ -1,5 +1,5 @@
 import { abi, contractAddress } from "./constants.js";
-import Web3 from 'web3';
+// import Web3 from 'web3';
 
 // import ganache from 'ganache';
 // const Web3 = require("web3");
@@ -10,13 +10,13 @@ let createTournament = document.getElementById('createTournament');
 let register = document.getElementById('register');
 
 
-const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/oox3rnLcR1MwEjduwOmOsXVGb2pawXso");
+const web3 = new Web3("wss://eth-sepolia.g.alchemy.com/v2/oox3rnLcR1MwEjduwOmOsXVGb2pawXso");
 const contract = new web3.eth.Contract(abi, contractAddress);
+let accounts;
 
 connectButton.onclick = connect
 createTournament.onclick = createTournaments
 register.onclick = register
-
 // Create a new Web3 instance with the provider of your choice
 // const web3 = new Web3('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID');
 //Replace 'https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID' with the URL of your preferred Ethereum node provider, such as Infura, Alchemy, or your own local no
@@ -29,22 +29,64 @@ async function connect() {
         console.log(error)
       }
       connectButton.innerHTML = "Connected"
-      const accounts = await ethereum.request({ method: "eth_accounts" })
-      console.log(accounts)
+      accounts = await ethereum.request({ method: "eth_accounts" })
+      console.log(accounts[0])
     } else {
       connectButton.innerHTML = "Please install MetaMask"
     }
 }
 
+// async function createTournaments() {
+//     await contract.methods.createTournament().send({from: accounts[0]})
+//       .then((data) => {
+//         console.log("Success:", data);
+//       })
+//       .catch((error) => {
+//         console.error("Error:", error);
+//       });
+//     // contract.methods.tournamentId().call().then(console.log);
+//     // .on('transactionHash', function(hash){
+//     //   console.log('Transaction Hash:', hash);
+//     // })
+//     // .on('receipt', function(receipt){
+//     //   console.log('Receipt:', receipt);
+//     // })
+//     // .on('error', function(error){
+//     //   console.error('Error calling createTournament:', error);
+//     // });
+//     // .then(data => {
+//     //     console.log("Tournament Created");
+//     //     createTournament.innerHTML = "Tournament Created";
+//     // })
+//     // .catch(error => {
+//     //     console.log("Tournament was not created");
+//     // });
+// }
+
 async function createTournaments() {
-    await web3.eth.methods.createTournament().send(accounts[0].address)
-    .then(data => {
-        console.log("Tournament Created");
-        createTournament.innerHTML = "Tournament Created";
-    })
-    .catch(error => {
-        console.log("Tournament was not created");
-    });
+  const functionName = 'createTournament';
+  const encodedData = contract.methods[functionName].encodeABI;
+  try {
+      const response = await fetch('https://eth-sepolia.api.alchemy.com/v2/transactions/sendRawTransaction', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': 'oox3rnLcR1MwEjduwOmOsXVGb2pawXso' // Replace with your Alchemy API key
+          },
+          body: JSON.stringify({
+            to: contractAddress, data: encodedData 
+          })
+      });
+
+      if (!response.ok) {
+          throw new Error('Failed to send transaction');
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+  } catch (error) {
+      console.error("Error:", error);
+  }
 }
 
 // async function register() {
@@ -57,34 +99,34 @@ async function createTournaments() {
 //     // const provider = new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"); // connected to our blockchain
 //     // const web3 = new Web3(provider);
 //     // or
-//     const web3 = new Web3("https://eth-sepolia.g.alchemy.com/v2/oox3rnLcR1MwEjduwOmOsXVGb2pawXso");
-//     const contract = new web3.eth.Contract(abi, contractAddress);
-//     const account = web3.eth.accounts.wallet.add('0x08fdb79d0797a2f3be23e65c04b7ea373873132a8b0c1952298ebd103dafa656');
-//     console.log(account[0].address);
-//     console.log(account[0].privateKey);
-//     const walletAddress = account[0].address;
-//     web3.eth.getBalance(walletAddress)
-//         .then(balance => {
-//           console.log('Wallet Address:', walletAddress);
-//           console.log('Balance:', web3.utils.fromWei(balance, 'ether'), 'ETH');
+//     // const web3 = new Web3("wss://eth-sepolia.g.alchemy.com/v2/oox3rnLcR1MwEjduwOmOsXVGb2pawXso");
+//     // const contract = new web3.eth.Contract(abi, contractAddress);
+//     // const account = web3.eth.accounts.wallet.add('0x08fdb79d0797a2f3be23e65c04b7ea373873132a8b0c1952298ebd103dafa656');
+//     // console.log(account[0].address);
+//     // console.log(account[0].privateKey);
+//     // const walletAddress = account[0].address;
+//     // web3.eth.getBalance(walletAddress)
+//     //     .then(balance => {
+//     //       console.log('Wallet Address:', walletAddress);
+//     //       console.log('Balance:', web3.utils.fromWei(balance, 'ether'), 'ETH');
+//     //     })
+//     //     .catch(error => {
+//     //       console.error('Error:', error);
+//     //     });
+//     await contract.methods.createTournament().send({ from: '0xc70Cd98fcB36cCfE70a571bB9A646FBF479e177A' })
+//         .on('transactionHash', function(hash){
+//           console.log('Transaction Hash:', hash);
 //         })
-//         .catch(error => {
-//           console.error('Error:', error);
+//         .on('receipt', function(receipt){
+//           console.log('Receipt:', receipt);
+//         })
+//         .on('error', function(error){
+//           console.error('Error calling createTournament:', error);
 //         });
-    // await contract.methods.createTournament().send({ from: '0xc70Cd98fcB36cCfE70a571bB9A646FBF479e177A' })
-    //     .on('transactionHash', function(hash){
-    //       console.log('Transaction Hash:', hash);
-    //     })
-    //     .on('receipt', function(receipt){
-    //       console.log('Receipt:', receipt);
-    //     })
-    //     .on('error', function(error){
-    //       console.error('Error calling createTournament:', error);
-    //     });
-    // console.log(contract);
+//     console.log(contract);
 //     contract.methods.tournamentId().call().then(console.log);
-//     const tournId = await contract.methods.tournamentId().call();
-//     console.log("Tournament Id: ", tournId);
+//     // const tournId = await contract.methods.tournamentId().call();
+//     // console.log("Tournament Id: ", tournId);
 //     // await contract.methods.registerForTournament('0xF140580EABcDc1599c3200b4D6Bf85cB43fBaD3E').send({from: '0xc70Cd98fcB36cCfE70a571bB9A646FBF479e177A'})
 //     //     .on('transactionHash', function(hash){
 //     //           console.log('Transaction Hash:', hash);
@@ -95,8 +137,8 @@ async function createTournaments() {
 //     //         .on('error', function(error){
 //     //           console.error('Error calling createTournament:', error);
 //     //         });
-//     const playersRegistred = await contract.methods.getNumberOfPlayersRegistred(tournId).call();
-//     console.log("Players Registred: ", playersRegistred);
+//     // const playersRegistred = await contract.methods.getNumberOfPlayersRegistred(tournId).call();
+//     // console.log("Players Registred: ", playersRegistred);
 //     // const sub = contract.events.methods.createTournament()
 //     // sub.on("data", console.log);
 //     // contract.methods.createTournament().call((error, result) => {
