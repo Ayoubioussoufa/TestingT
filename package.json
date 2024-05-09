@@ -13,7 +13,11 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "sepolia": "^1.0.0",
     "solc": "^0.8.25",
     "web3": "^4.8.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
   }
 }
