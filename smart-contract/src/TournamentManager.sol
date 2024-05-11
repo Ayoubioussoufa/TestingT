@@ -22,6 +22,7 @@ contract TournamentManager {
 
     // mapping TournamentId and the addresses of players registred
     mapping(int8 tournamentId => address[]) public playersRegistred;
+    mapping(int8 => mapping(address => bool)) public playerschecks;
 
     // mapping tournament id and the player's scores in that specific tournament
     mapping(int8 tournamentId => mapping(address => PlayerScores)) playerScores;
@@ -41,7 +42,9 @@ contract TournamentManager {
     // addp players to the tournament
     function registerForTournament(address player) public {
         require(tournament[uint8(tournamentId)].isOpen, "Tournament is not open yet");
+        require(!playerschecks[tournamentId][msg.sender], "You are already registred"); //I should check if the player is already registred or not
         playersRegistred[tournamentId].push(msg.sender);
+        playerschecks[tournamentId][msg.sender] = true;
         emit PlayerRegistred(tournamentId, player);
     }
 
@@ -102,6 +105,21 @@ contract TournamentManager {
             losses += playerScores[index][player].losses;
         }
     }
+
+    // getting all the player's wins on a specific tournament
+    function getPlayerWinsOnACertainTournament(int8 tournamentIds, address player) public view returns(uint256 wins) {
+        wins += playerScores[tournamentIds][player].wins;
+    }
+
+    // getting all the player's losses on a specific tournament
+    function getPlayerLossesOnACertainTournament(int8 tournamentIds, address player) public view returns(uint256 losses) {
+        losses += playerScores[tournamentIds][player].losses;
+    }
+
+    function ifAddressIsRegistredInTournament(int8 tournamentIds, address player) public view returns(bool condition) {
+        condition = playerschecks[tournamentIds][player];
+    }
 }
 
 // still needs to be tested !
+//line 45 added

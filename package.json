@@ -12,6 +12,7 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.7",
     "bootstrap": "^5.3.3",
     "sepolia": "^1.0.0",
     "solc": "^0.8.25",
