@@ -1,61 +1,19 @@
-/* body {
-    background: url("./src/assets/images/theme_background.jpeg");
-    background-blend-mode: multiply;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
+/* Center and style the color picker button */
+#colorPicker {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
 
-.navbar {
-    height: 80px;
-}
-
-@media (max-width: 991px) {
-    .sidebar {
-        background-color: 	rgba(0, 0, 0, 0.5) !important;
-        backdrop-filter: blur(3px);
-    }
-    .bot {
-        position: fixed;
-        bottom: 0;
-        width: 90%;
-        padding: 10px 0;
-    }
-    .bot .btn {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-    .custom {
-        margin: 5px;
-        padding: 5px;
-    }
-}
-
-.customBack {
-    transition: 0.3s background-color !important;
-    background-color: #5ccebe;
-    font-size: 18px;
-}
-
-.customBack:hover {
-    background-color: #c74b71 !important;
-}
-
-.custom {
-    color: #5ccebe;
-    font-size: 18px;
-}
-
-.custom:hover {
-    color:#c74b71;
-}
-
-.linkhover {
-    transition: 0.1s background-color;
-    color: white;
-}
-
-.linkhover:hover {
-    color: black;
-}
-
+  .color-picker {
+    display: none;
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 100px; /* Adjust as needed */
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 9999;
+  }
