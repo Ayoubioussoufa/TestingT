@@ -1,16 +1,16 @@
 import state from './state.js';
 
 const routes = {
-    '#home': './html/home.html',
-    '#about': './html/about.html',
-    '#contact': './html/contact.html',
-    '#login': './html/login.html',
-    '#loginbefore': './html/loginbefore.html',
-    '#data': './html/data.html',
-    '#tournament': './html/tournament.html',
-    '#leaderboard': './html/leaderboard.html',
-    '#gameplay': './html/gameplay.html',
-    '#playerprofile': './html/playerprofile.html',
+    '#home': './home.html',
+    '#about': './about.html',
+    '#contact': './contact.html',
+    '#login': './login.html',
+    '#loginbefore': './loginbefore.html',
+    '#data': './data.html',
+    '#tournament': './tournament.html',
+    '#leaderboard': './leaderboard.html',
+    '#gameplay': './gameplay.html',
+    '#playerprofile': './playerprofile.html',
 };
 
 function loadView(view) {
@@ -18,7 +18,15 @@ function loadView(view) {
         .then(response => response.text())
         .then(html => {
             document.getElementById('app').innerHTML = html;
-            if (view === './html/data.html') {
+            const script = document.querySelector(`#${view.replace('./', '').replace('.html', '')}-script`);
+            if (script) {
+                const newScript = document.createElement('script');
+                newScript.src = script.src;
+                newScript.type = 'module';
+                console.log(newScript);
+                document.body.appendChild(newScript);
+            }
+            if (view === './data.html') {
                 loadData();
             }
         });

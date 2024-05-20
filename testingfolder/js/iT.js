@@ -1,3 +1,5 @@
+import './router.js';
+
 document.getElementById('colorPicker').addEventListener('click', function() {
     var colorPickerContainer = document.getElementById('colorPickerContainer');
     if (colorPickerContainer.style.display === 'none') {
@@ -14,6 +16,6 @@ document.getElementById('colorPicker').addEventListener('click', function() {
     option.addEventListener('click', function() {
       // Change the background color of targeted elements
       // For demonstration, changing the body background color
-      document.getElementsByClassName('customBack').style.backgroundColor = option.querySelector('i').style.color;
+      document.body.style.backgroundColor = option.querySelector('i').style.color;
     });
   });
