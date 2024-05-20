@@ -97,7 +97,7 @@
     display: none;
     color: white;
     background-color: rgb(73, 71, 71) !important;
-    position: absolute;
+    position: fixed;
     top: 54%;
     right: 0;
     z-index: 9999;

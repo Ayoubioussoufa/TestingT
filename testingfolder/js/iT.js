@@ -14,8 +14,7 @@ document.getElementById('colorPicker').addEventListener('click', function() {
   var colorOptions = document.querySelectorAll('.color-option');
   colorOptions.forEach(function(option) {
     option.addEventListener('click', function() {
-      // Change the background color of targeted elements
-      // For demonstration, changing the body background color
+      // changing the  color
       document.documentElement.style.setProperty('--color', option.querySelector('i').style.color);
     });
   });
