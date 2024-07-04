@@ -4,6 +4,7 @@ const passwordToggleBtn = document.getElementById('passwordToggleBtn');
 
 // Add event listener to toggle button
 passwordToggleBtn.addEventListener('click', function() {
+    console.log('Toggle button clicked');
   // Toggle password visibility
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';

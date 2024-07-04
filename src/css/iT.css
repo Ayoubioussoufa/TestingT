@@ -1,5 +1,9 @@
+:root {
+    --color: #5ccebe;
+}
+
 body {
-    background: url("./src/assets/images/theme_background.jpeg");
+    background: url("../assets/images/theme_background.jpeg");
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
@@ -7,7 +11,8 @@ body {
 }
 
 .navbar {
-    height: 80px;
+    height: 5%;
+    border-bottom: 5px solid var(--color);
 }
 
 @media (max-width: 991px) {
@@ -33,21 +38,22 @@ body {
 
 .customBack {
     transition: 0.3s background-color !important;
-    background-color: #5ccebe;
+    background-color: var(--color);
     font-size: 18px;
+    border: none;
 }
 
 .customBack:hover {
-    background-color: #c74b71 !important;
+    background-color: #f55283 !important;
 }
 
 .custom {
-    color: #5ccebe;
+    color: var(--color);
     font-size: 18px;
 }
 
 .custom:hover {
-    color:#c74b71;
+    color:#f55283;
 }
 
 .linkhover {
@@ -91,7 +97,7 @@ body {
     display: none;
     color: white;
     background-color: rgb(73, 71, 71) !important;
-    position: absolute;
+    position: fixed;
     top: 54%;
     right: 0;
     z-index: 9999;
@@ -101,6 +107,7 @@ body {
     padding: 10px;
     transition: right 0.5s ease;
     border-radius: 20px;
+    border: none;
   }
   
   .color-picker.show {

@@ -1,16 +1,16 @@
 import state from './state.js';
 
 const routes = {
-    '#home': './home.html',
-    '#about': './about.html',
-    '#contact': './contact.html',
-    '#login': './login.html',
-    '#loginbefore': './loginbefore.html',
-    '#data': './data.html',
-    '#tournament': './tournament.html',
-    '#leaderboard': './leaderboard.html',
-    '#gameplay': './gameplay.html',
-    '#playerprofile': './playerprofile.html',
+    '#home': 'src/html/home.html',
+    '#about': 'src/html/about.html',
+    '#contact': 'src/html/contact.html',
+    '#login': 'src/html/login.html',
+    '#loginbefore': 'src/html/loginbefore.html',
+    '#data': 'src/html/data.html',
+    '#tournament': 'src/html/tournament.html',
+    '#leaderboard': 'src/html/leaderboard.html',
+    '#gameplay': 'src/html/gameplay.html',
+    '#playerprofile': 'src/html/playerprofile.html',
 };
 
 function loadView(view) {
