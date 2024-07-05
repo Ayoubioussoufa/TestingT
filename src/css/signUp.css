@@ -11,10 +11,10 @@ body {
     min-height: 100vh;
     background-color: black;
     /* background: url("../assets/images/theme_background.jpeg"); */
-    /* background-blend-mode: multiply;
+    background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 }
 
 main {
@@ -25,7 +25,7 @@ main {
 }
 
 .wrapper {
-    width: 435px;
+    max-width: 435px;
     background: transparent;
     border: 2px solid rgba(135,40,90, .2);
     backdrop-filter: blur(20px);
@@ -44,7 +44,19 @@ main {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 30px 0;
+    margin: 40px 0;
+}
+
+p {
+    position: relative;
+    width: 100%;
+    margin: 0px 0px 5px;
+    font-size: 12px;
+}
+
+.passwordToggleBtn {
+    position: absolute;
+    bottom: 3px;
 }
 
 .input-box input {
@@ -182,4 +194,12 @@ main {
 
 .wrapper .or-separator .or-text {
   padding: 0 10px;
+}
+
+/* ---------------------- */
+
+.Confirmating {
+    margin: 24px 0px 0px;
+    padding: 0px 0px 15px;
+    font-size: 11px;
 }

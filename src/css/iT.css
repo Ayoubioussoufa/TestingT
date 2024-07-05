@@ -3,11 +3,12 @@
 }
 
 body {
-    background: url("../assets/images/theme_background.jpeg");
+    background-color: black;
+    /* background: url("../assets/images/theme_background.jpeg");
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 .navbar {

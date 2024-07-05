@@ -1,17 +1,18 @@
 // Get the password input and toggle button
-const passwordInput = document.getElementById('passwordInput');
-const passwordToggleBtn = document.getElementById('passwordToggleBtn');
+const passwordInput = document.getElementsByClassName('passwordInput');
+const passwordToggleBtn = document.getElementsByClassName('passwordToggleBtn');
 
 // Add event listener to toggle button
-passwordToggleBtn.addEventListener('click', function() {
+for (let i = 0; i < passwordToggleBtn.length; i++) {
+    passwordToggleBtn[i].addEventListener('click', function() {
     console.log('Toggle button clicked');
-  // Toggle password visibility
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        passwordToggleBtn.innerHTML = '<i class="bi bi-eye" style="color: white;"></i>';
+    // Toggle password visibility
+    if (passwordInput[i].type === 'password') {
+        passwordInput[i].type = 'text';
+        passwordToggleBtn[i].innerHTML = '<i class="bi bi-eye" style="color: white;"></i>';
     } else {
-        passwordInput.type = 'password';
-        passwordToggleBtn.innerHTML = '<i class="bi bi-eye-slash" style="color: white;"></i>';
+        passwordInput[i].type = 'password';
+        passwordToggleBtn[i].innerHTML = '<i class="bi bi-eye-slash" style="color: white;"></i>';
     }
-});
-
+    });
+}

@@ -5,6 +5,7 @@ const routes = {
     '#about': 'src/html/about.html',
     '#contact': 'src/html/contact.html',
     '#login': 'src/html/login.html',
+    '#signUp': 'src/html/signUp.html',
     '#loginbefore': 'src/html/loginbefore.html',
     '#data': 'src/html/data.html',
     '#tournament': 'src/html/tournament.html',
