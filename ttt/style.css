@@ -14,6 +14,8 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    min-width: 768px;
+    overflow-x: hidden;
 }
 
 .container{
@@ -74,7 +76,7 @@ body{
     height: 100%;
 }
 
-.container input{
+.container .input-box {
     background-color: #eee;
     border:none;
     margin: 8px 0;
@@ -84,6 +86,46 @@ body{
     width: 100%;
     outline: none;
 }
+
+/* ------------------------------------------------------- */
+.input-container {
+    position: relative; /* Container is positioned relative */
+    width: 100%; /* Adjust as needed */
+}
+
+.input-box input {
+    background-color: #eee;
+    border: none;
+    font-size: 13px;
+    width: 100%;
+    outline: none;
+}
+
+.passwordInput {
+    width: calc(100% - 40px); /* Adjust width to make space for the button */
+    padding-right: 40px; /* Space for the button inside the input field */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.passwordToggleBtn {
+    position: absolute; /* Absolute positioning within the container */
+    right: 50px; /* Adjust distance from the right edge */
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.passwordToggleBtn2 {
+    position: absolute; /* Absolute positioning within the container */
+    top: 70%; /* Center vertically */
+    right: 50px; /* Adjust distance from the right edge */
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.passwordToggleBtn i {
+    color: rgb(0, 0, 0); /* Icon color */
+}
+/* ------------------------------------------------------- */
 
 .form-container{
     position: absolute;
@@ -129,7 +171,6 @@ body{
 
 .social-icons{
     margin: 20px 0;
-    /* display: inline-block; */
 }
 
 .social-icons a {
@@ -204,10 +245,3 @@ body{
     right: 0;
     transform: translateX(0);
 }
-
-/* .svg {
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    background-color: #ffffff;
-} */
