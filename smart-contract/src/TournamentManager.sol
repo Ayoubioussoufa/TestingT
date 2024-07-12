@@ -120,6 +120,3 @@ contract TournamentManager {
         condition = playerschecks[tournamentIds][player];
     }
 }
-
-// still needs to be tested !
-//line 45 added

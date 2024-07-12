@@ -60,3 +60,5 @@ async function connect() {
       connectButton.innerHTML = "Please install MetaMask"
     }
 }
+
+// kaayna khdma awlidi
