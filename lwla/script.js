@@ -34,7 +34,7 @@ for (let i = 0; i < passwordToggleBtn.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+    document.getElementById('signUpForm').addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent the default signUp submission
         if (passwordSimilar1.value != passwordSimilar2.value)
         {
@@ -42,24 +42,56 @@ document.addEventListener('DOMContentLoaded', function() {
             return; // Stop further execution
         }
         const formData = new FormData(this);
-
-        const username = formData.get('loginID');
-        const password = formData.get('password');
-        console.log('Username:', username);
-        console.log('Password:', password);
-
-        // Send the form data using Fetch API
-        // fetch('/submit', { // Specify the server endpoint directly
-        //     method: 'POST',
-        //     body: formData
-        // })
-        // .then(response => response.json()) // Parse JSON response
-        // .then(data => {
-        //     // Handle the response data
-        //     document.getElementById('response').textContent = JSON.stringify(data);
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        // });
-    }); // waiting for the backend how we will treat this !!! 
+        console.log(formData.get('loginID'));
+        console.log(formData.get('password'));
+        console.log(formData.get('email'));
+        try {
+            let response = await fetch('http://10.14.53.154:8000/login/42/', { // Specify the server endpoint directly
+                method: 'POST',
+                body: formData
+            })
+            let rewind = await response.json();
+            console.log("Response : ", rewind);
+            if (response.ok) {
+                document.location.href = 'http://localhost:5501';
+            }
+        } catch (error) {
+            console.error("Error : ", error);
+        }
+    });
 });
+
+// This script runs when the page loads
+window.onload = async function() {
+    // Get the query parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Example: Extract a query parameter called 'code'
+    const authCode = urlParams.get('code');
+    
+    if (authCode) {
+        // Do something with the authorization code
+        console.log('Authorization Code:', authCode);
+        try {
+            const response = await fetch('http://10.14.53.154:8000/login/42?code=' + authCode);
+            if (response.ok) {
+                console.log('Authentication initiated successfully');
+                console.log(response);
+                let r = await response.json();
+                console.log(r);
+                document.location.href = 'http://localhost:5501';
+
+            } else {
+                console.error('Failed to initiate 42 authentication');
+            }
+        } catch (error) {
+            console.error('Login with 42 failed:', error);
+        }
+        // Display the authorization code on the webpage
+        // document.getElementById('message').innerText = 'Authorization Code: ' + authCode;
+    } else {
+        // Handle the absence of the authorization code
+        console.log('No authorization code found.');
+        // document.getElementById('message').innerText = 'No authorization code found.';
+    }
+};
