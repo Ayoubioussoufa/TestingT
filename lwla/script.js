@@ -45,10 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(formData.get('loginID'));
         console.log(formData.get('password'));
         console.log(formData.get('email'));
+        console.log(formData);
         try {
-            let response = await fetch('http://10.14.53.154:8000/login/42/', { // Specify the server endpoint directly
+            let response = await fetch('http://10.14.53.154:8000/signup/', { // Specify the server endpoint directly
                 method: 'POST',
-                body: formData
+                body: formDataToJson(formData)
             })
             let rewind = await response.json();
             console.log("Response : ", rewind);
@@ -95,3 +96,11 @@ window.onload = async function() {
         // document.getElementById('message').innerText = 'No authorization code found.';
     }
 };
+
+function formDataToJson(formData) {
+    const obj = {};
+    formData.forEach((value, key) => {
+        obj[key] = value;
+    });
+    return JSON.stringify(obj);
+}

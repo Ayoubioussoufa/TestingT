@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font: 'Luminari, fantasy';
 }
 
 body{
@@ -21,7 +21,7 @@ body{
 .container{
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 5px 15px rgba(223, 31, 31, 0.35);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -203,7 +203,7 @@ body{
 }
 
 .toggle{
-    background-color: rgba(87, 87, 87, 0.952);
+    background-color: rgba(103, 73, 109, 0.952);
     height: 100%;
     color: #fff;
     position: relative;
