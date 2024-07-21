@@ -7,30 +7,78 @@
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="test.css">  
+  <link rel="stylesheet" href="test.css">
 </head>
 <body class="no-scroll">
-    <nav>
-      <div class="row">
-        <div class="col-9" style= "height: 100px;">
-            PLAY
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <!-- fluid to be added later on -->
+      <div class="container-fluid">
+        <!-- Name -->
+        <!-- <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button> -->
+        <!-- SideBar -->
+        <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
+          <!-- SideBar Header -->
+          <div class="offcanvas-header text-white border-bottom shadow-none">
+            <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+          <!-- SideBar Body -->
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center fs-6 flex-grow-1 pe-3 gap-2">
+              <li class="nav-item">
+                <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom" href="#home"><strong>Home</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom" href="#leaderboard"><strong>Leaderboard</strong></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-3" style=" height: 100px;">
-          PROFIL
-        </div>
+        <!-- Toggle Button -->
+        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- USER PROFILE -->
+        <button class="user">
+          <div class="d-flex flex-column justify-content-center align-items-center gap-2 flex-lg-row bot">
+            <div class="ProfileImage">
+
+            </div>
+            <div class="UserProfile">
+              <a href="#" class="text-white text-decoration-one px-3 py-1 rounded-4 btn customBack"><strong>USER HERE</strong></a>
+            </div>
+          </div>
+        </button>
       </div>
     </nav>
     <div class="row">
-      <div class="col-9" style=" height: 100vh">
-        <!-- <div class="video-container">
-          <video controls loop>
-              <source src="./videoplayback.webm" type="video/webm">
+      <div class="video col-10 d-flex justify-content-center align-items-start" style=" height: 100vh">
+        <div class="video-container">
+          <video id="background-video" autoplay muted loop>=
+            <source src="./videoplayback.webm" type="video/webm">
           </video>
-      </div> -->
       </div>
-      <div class="col-3"  style=" height: 100vh">
+      </div>
+      <div class="col-2 justify-content-center align-items-center"  style=" height: 100vh">
         FRIEND LIST
       </div>
     </div>
+    <script>
+      const video = document.getElementById('background-video');
+      video.addEventListener('pause', function() {
+          video.play();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
 </html>

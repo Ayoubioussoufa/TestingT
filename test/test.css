@@ -2,11 +2,34 @@
     overflow: hidden;
   }
 
-body {
-    background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6);
-}
-
 nav {
     border: 1px solid black;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6);
+}
+
+.row {
+    border: 1px solid rgb(252, 99, 99);
+
+}
+
+.video {
+    position: relative !important;
+    height: 100vh !important; /* Full viewport height */
+    overflow: hidden !important;
+}
+
+.video-container {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
