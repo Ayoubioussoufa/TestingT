@@ -1,0 +1,12 @@
+.no-scroll {
+    overflow: hidden;
+  }
+
+body {
+    background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6);
+}
+
+nav {
+    border: 1px solid black;
+}
+
