@@ -10,33 +10,34 @@
   <link rel="stylesheet" href="test.css">
 </head>
 <body class="no-scroll">
+  <div class="background"></div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
       <!-- fluid to be added later on -->
       <div class="container-fluid">
-        <!-- Name -->
-        <!-- <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button> -->
+        <!-- Logo -->
+        <a href="#"><img class="image" src="./logo.png"></a>
         <!-- SideBar -->
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel">
           <!-- SideBar Header -->
           <div class="offcanvas-header text-white border-bottom shadow-none">
-            <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button>
+            <a href="#"><img class="image" src="./logo.png"></a>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
               aria-label="Close"></button>
           </div>
           <!-- SideBar Body -->
           <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-center fs-6 flex-grow-1 pe-3 gap-2">
-              <li class="nav-item">
-                <button><a class="navbar-brand fs-4 me-auto custom" href="#"><strong>Play</strong></a></button>
-              </li>
+            <ul class="navbar-nav"> <!-- justify-content-center fs-6 flex-grow-1 pe-3 gap-2 -->
               <li class="nav-item">
                 <a class="nav-link custom" href="#home"><strong>Home</strong></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link custom" href="#leaderboard"><strong>Leaderboard</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom" href="#leaderboard"><strong>About Us</strong></a>
               </li>
             </ul>
           </div>
@@ -59,26 +60,44 @@
         </button>
       </div>
     </nav>
-    <div class="row">
-      <div class="video col-10 d-flex justify-content-center align-items-start" style=" height: 100vh">
-        <div class="video-container">
-          <video id="background-video" autoplay muted loop>=
-            <source src="./videoplayback.webm" type="video/webm">
-          </video>
+    <div class="contain">
+      <div class="friend-list">
+        <p>friends</p>
+        <div class="friend" data-friend="Friend 1">Friend 1</div>
+        <div class="friend" data-friend="Friend 2">Friend 2</div>
+        <div class="friend" data-friend="Friend 3">Friend 3</div>
+        <!-- to be automated -->
       </div>
-      </div>
-      <div class="col-2 justify-content-center align-items-center"  style=" height: 100vh">
-        FRIEND LIST
+  
+      <div class="conversation">
+          <h2>Conversation with <span id="friend-name"></span></h2>
+          <div id="conversation-content">
+              <!-- Conversation content will be dynamically loaded here -->
+          </div>
+          <button id="back-button">Back to Friends List</button>
       </div>
     </div>
-    <script>
-      const video = document.getElementById('background-video');
-      video.addEventListener('pause', function() {
-          video.play();
-      });
-    </script>
+    <a href=""><img class="play" src="playBtn.png" alt=""></a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    <script src="test.js"></script>  
+  <script>
+    document.querySelectorAll('.friend').forEach(friend => {
+        friend.addEventListener('click', function() {
+            const friendName = this.getAttribute('data-friend');
+            document.getElementById('friend-name').textContent = friendName;
+            // document.querySelector('.friend-list').style.display = 'none';
+            document.querySelector('.conversation').style.display = 'block';
+            // Load conversation content dynamically
+            document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
+        });
+    });
+
+    document.getElementById('back-button').addEventListener('click', function() {
+        document.querySelector('.friend-list').style.display = 'block';
+        document.querySelector('.conversation').style.display = 'none';
+    });
+</script>
 </body>
 </html>

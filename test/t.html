@@ -1,50 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Navbar Example</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    .navbar {
-      height: 60px; /* Set height for desktop */
-    }
-    .navbar-nav .nav-link {
-      font-size: 16px; /* Font size for nav items */
-    }
-    @media (max-width: 576px) {
-      .navbar {
-        height: auto; /* Adjust height for mobile if needed */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend List and Conversation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .friend-list, .conversation {
+            width: 460px;
+            height: 724px;
+            border-radius: 10px 0 10px 10px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark, semi-transparent background */
+            backdrop-filter: blur(10px); /* Applies a blur effect */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Optional: adds a shadow */
+        }
+
+        .friend-list {
+            margin-right: 20px; /* Space between friend list and conversation */
+        }
+
+        .friend {
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Matches the container's background */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: white; /* White text color */
+        }
+
+        .friend:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly darker on hover */
+        }
+
+        .conversation {
+            display: none; /* Initially hide the conversation div */
+        }
+
+        .show-conversation .conversation {
+            display: block; /* Show the conversation when activated */
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Brand</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <div class="container">
+        <div class="friend-list">
+            <div class="friend" data-friend="Friend 1">Friend 1</div>
+            <div class="friend" data-friend="Friend 2">Friend 2</div>
+            <div class="friend" data-friend="Friend 3">Friend 3</div>
+            <!-- Add more friends as needed -->
+        </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="conversation">
+            <h2>Conversation with <span id="friend-name"></span></h2>
+            <div id="conversation-content">
+                <!-- Conversation content will be dynamically loaded here -->
+            </div>
+            <button id="back-button" class="btn btn-primary">Back to Friends List</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.friend').forEach(friend => {
+            friend.addEventListener('click', function() {
+                const friendName = this.getAttribute('data-friend');
+                document.getElementById('friend-name').textContent = friendName;
+                // document.querySelector('.friend-list').style.display = 'none';
+                document.querySelector('.conversation').style.display = 'block';
+                // Load conversation content dynamically
+                document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
+            });
+        });
+
+        document.getElementById('back-button').addEventListener('click', function() {
+            document.querySelector('.friend-list').style.display = 'block';
+            document.querySelector('.conversation').style.display = 'none';
+        });
+    </script>
 </body>
 </html>

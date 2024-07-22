@@ -8,20 +8,34 @@
 }
 
 body{
-    background-color: rgba(0, 0, 0, 0.795);
+    background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
     min-width: 768px;
-    overflow-x: hidden;
+    overflow: hidden;
+    font-family:'Luminari'; /* ---------------------*/
+}
+
+@font-face {
+    font-family: 'Luminari';
+    src: url('../luminari-cdnfonts/Luminari-Regular.ttf');
+}
+
+.ball {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #f39999;
+    width: 20px;
+    height: 20px;
 }
 
 .container{
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(223, 31, 31, 0.35);
+    box-shadow: 0 5px 15px #f39999;
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -174,7 +188,7 @@ body{
 }
 
 .social-icons a {
-    border: 1px solid #ccc;
+    border: 1px solid #EDC0E6;
     border-radius: 50%;
     display: inline-block;
     margin: 0 5px;
@@ -203,7 +217,7 @@ body{
 }
 
 .toggle{
-    background-color: rgba(103, 73, 109, 0.952);
+    background-color: #EDC0E6;
     height: 100%;
     color: #fff;
     position: relative;

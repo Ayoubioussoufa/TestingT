@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Balls</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #f39999;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const numberOfBalls = 20;
+            const balls = [];
+
+            for (let i = 0; i < numberOfBalls; i++) {
+                let ball = document.createElement("div");
+                ball.classList.add("ball");
+                document.body.appendChild(ball);
+                balls.push({
+                    element: ball,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: (Math.random() - 0.5) * 10,
+                });
+            }
+
+            function animate() {
+                balls.forEach(ball => {
+                    ball.x += ball.vx;
+                    ball.y += ball.vy;
+
+                    if (ball.x < 0 || ball.x > window.innerWidth - 20) ball.vx *= -1;
+                    if (ball.y < 0 || ball.y > window.innerHeight - 20) ball.vy *= -1;
+
+                    ball.element.style.transform = `translate(${ball.x}px, ${ball.y}px)`;
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</body>
+</html>
