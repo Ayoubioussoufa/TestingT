@@ -1,0 +1,91 @@
+.bubble {
+    display: flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 85% 75% 78% 73% !important;
+    background: linear-gradient(
+        #cdd7f9,
+        #8fbcff40,
+        #b5e3ff7d,
+        #adc6ff17) !important;
+    border: 1px solid #0000ff36 !important;
+    animation: rotate 10s linear forwards infinite !important;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) !important;
+    }
+    100% {
+        transform: rotate(360deg) !important;
+    }
+}
+
+.navbar {
+    background-color: #f8f9fa; /* Change this to your preferred background color */
+    height: 120px !important; /* Set height to 120px */
+    margin-top: 20px !important; /* Gap between the window and the navbar */
+    margin-bottom: 30px !important; /* Optional: Additional gap below the navbar */
+}
+
+.navbar .image {
+    height: 40px !important;
+    margin-right: 20px !important;
+}
+
+.user {
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.navbar .container-fluid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+.navbar .navbar-toggler {
+    order: 0 !important;
+    margin-right: 20px !important; /* Adjust margin as needed */
+}
+
+
+.navbar .sidebar .offcanvas-header {
+    background-color: #73b1f0 !important; /* Sidebar header background color */
+}
+
+.navbar .sidebar .offcanvas-header .image {
+    height: 30px !important;
+}
+
+.navbar .sidebar .offcanvas-body {
+    background-color: #73b1f0 !important; /* Sidebar body background color */
+}
+
+.navbar .sidebar .offcanvas-body .nav-link {
+    color: white !important; /* Sidebar link color */
+    padding: 10px 0 !important;
+}
+
+.navbar .sidebar .offcanvas-body .nav-link:hover {
+    background-color: #495057 !important; /* Sidebar link hover background color */
+    border-radius: 5px !important;
+}
+
+.navbar .user {
+    background: none !important;
+    border: none !important;
+}
+
+.navbar .user .customBack {
+    background-color: #007bff !important; /* Change this to your preferred button background color */
+    color: white !important;
+    font-weight: bold !important;
+    border: none !important;
+}
+
+.navbar .user .customBack:hover {
+    background-color: #0056b3 !important;
+}

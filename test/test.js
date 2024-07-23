@@ -1,40 +1,58 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const numberOfBalls = 0;
-    const balls = [];
-    const ballSize = 20;
-
-    for (let i = 0; i < numberOfBalls; i++) {
-        let ball = document.createElement("div");
-        ball.classList.add("ball");
-        document.body.appendChild(ball);
-        balls.push({
-            element: ball,
-            x: Math.random() * (window.innerWidth - ballSize),
-            y: Math.random() * (window.innerHeight - ballSize),
-            vx: (Math.random() - 0.5) * 10,
-            vy: (Math.random() - 0.5) * 10,
-        });
-    }
-
-    function animate() {
-        balls.forEach(ball => {
-            ball.x += ball.vx;
-            ball.y += ball.vy;
-
-            if (ball.x < 0 || ball.x > window.innerWidth - ballSize) ball.vx *= -1;
-            if (ball.y < 0 || ball.y > window.innerHeight - ballSize) ball.vy *= -1;
-
-            ball.element.style.left = ball.x + 'px';
-            ball.element.style.top = ball.y + 'px';
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    const video = document.getElementById('background-video');
-    video.addEventListener('pause', function() {
-        video.play();
+document.querySelectorAll('.friend').forEach(friend => {
+    friend.addEventListener('click', function() {
+        const friendName = this.getAttribute('data-friend');
+        document.getElementById('friend-name').textContent = friendName;
+        // if (document.querySelector('.conversation').style.display == 'none')
+            document.querySelector('.conversation').style.display = 'block';
+        // else
+            // document.querySelector('.conversation').style.display = 'none';
+        // Load conversation content dynamically
+        document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
+        document.querySelector('.Text').style.display = 'none';
     });
 });
+
+document.getElementById('back-button').addEventListener('click', function() {
+    document.querySelector('.friend-list').style.display = 'block';
+    document.querySelector('.conversation').style.display = 'none';
+    document.querySelector('.Text').style.display = 'block';
+});
+
+document.getElementById('search-btn').addEventListener('click', function() {
+    if (document.getElementById('search-bar').style.display == 'block')
+    {
+        document.getElementById('search-bar').style.display = 'none';
+        document.getElementById('add-friend-bar').style.display = 'none';
+    }
+    else {
+        document.getElementById('search-bar').style.display = 'block';
+        document.getElementById('add-friend-bar').style.display = 'none';
+    }
+});
+
+document.getElementById('add-btn').addEventListener('click', function() {
+    if (document.getElementById('search-bar').style.display == 'block')
+    {
+        document.getElementById('search-bar').style.display = 'none';
+        document.getElementById('add-friend-bar').style.display = 'none';
+    }
+    else
+    {
+        document.getElementById('search-bar').style.display = 'block';
+        document.getElementById('add-friend-bar').style.display = 'none';
+    }
+});
+
+function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    bubble.style.left = `${Math.random() * 100}vw`;
+    bubble.style.animationDelay = `${Math.random() * 10}s`;
+    document.body.appendChild(bubble);
+
+    setTimeout(() => {
+        bubble.remove();
+    }, 10000);
+}
+
+setInterval(createBubble, 300);

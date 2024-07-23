@@ -8,7 +8,8 @@
 }
 
 body{
-    background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6);
+    /* background-image: linear-gradient(to right, #b0e9f5 , #EDC0E6); */
+    background-image: url('../test/prestige-ocean-song-seraphine-league-of-legneds-4k-8y-1920x1080.jpg');
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,18 +25,10 @@ body{
     src: url('../luminari-cdnfonts/Luminari-Regular.ttf');
 }
 
-.ball {
-    position: absolute;
-    border-radius: 50%;
-    background-color: #f39999;
-    width: 20px;
-    height: 20px;
-}
-
 .container{
-    background-color: #fff;
+    background-color: #EBE7D4;
     border-radius: 30px;
-    box-shadow: 0 5px 15px #f39999;
+    box-shadow: 0 5px 15px #5c8795;
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -62,7 +55,7 @@ body{
 }
 
 .container button{
-    background-color: rgb(0, 0, 0);
+    background-color: #5c8795;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -75,24 +68,29 @@ body{
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #7AD4E1;
+}
+
 .container button.hidden{
     background-color: transparent;
-    border-color: #fff;
+    border-color: #DED7C2;
 }
 
 .container form{
-    background-color: #fff;
+    background-color: #DED7C2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 0 40px;
     height: 100%;
+    color: #5c8795;
 }
 
 .container .input-box {
-    background-color: #eee;
-    border:none;
+    background-color: #DED7C2;
+    border: 1px solid #5c8795;
     margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
@@ -108,7 +106,7 @@ body{
 }
 
 .input-box input {
-    background-color: #eee;
+    background-color: #DED7C2;
     border: none;
     font-size: 13px;
     width: 100%;
@@ -137,7 +135,7 @@ body{
 }
 
 .passwordToggleBtn i {
-    color: rgb(0, 0, 0); /* Icon color */
+    color: rgb(255, 255, 255); /* Icon color */
 }
 /* ------------------------------------------------------- */
 
@@ -188,7 +186,7 @@ body{
 }
 
 .social-icons a {
-    border: 1px solid #EDC0E6;
+    border: 1px solid #5c8795;
     border-radius: 50%;
     display: inline-block;
     margin: 0 5px;
@@ -217,9 +215,9 @@ body{
 }
 
 .toggle{
-    background-color: #EDC0E6;
+    background-color: #5c8795;
     height: 100%;
-    color: #fff;
+    color: #EBE7D4;
     position: relative;
     left: -100%;
     height: 100%;
@@ -258,4 +256,51 @@ body{
 .toggle-right{
     right: 0;
     transform: translateX(0);
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    width: 20px;
+    height: 20px;
+    /* background: linear-gradient(
+        #cdd7f9,
+        #19f5e340,
+        #b5e3ff7d,
+        #2bd4eb17); */
+    /* background: rgba(0, 255, 255, 0.6); */
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(173,216,230,0.3) 40%, rgba(173,216,230,0.2) 60%, rgba(255,255,255,0.1) 100%);
+    border-radius: 85% 75% 78% 73%;
+    opacity: 0;
+    animation: rise 10s infinite, size 10s infinite, rotate 10s linear infinite;
+}
+
+@keyframes rise {
+    0% {
+        bottom: -100px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes size {
+    0% {
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        width: 50px;
+        height: 50px;
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
