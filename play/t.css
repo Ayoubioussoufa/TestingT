@@ -1,0 +1,30 @@
+/* League of Legends Style Confirmation Button */
+.lol-confirm-btn {
+    background-color: #2c2f36; /* Dark background similar to LOL's theme */
+    color: #ffffff; /* White text for contrast */
+    border: 2px solid #4a4a4a; /* Dark gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 12px 24px; /* Padding for button size */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+  }
+  
+  .lol-confirm-btn:hover {
+    background-color: #3b3f44; /* Slightly lighter dark background on hover */
+    border-color: #6a6a6a; /* Lighter border color on hover */
+  }
+  
+  .lol-confirm-btn:active {
+    background-color: #2a2d32; /* Even darker background on click */
+    border-color: #4a4a4a; /* Maintain border color on click */
+  }
+  
+  .lol-confirm-btn:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle white glow effect */
+  }
+  

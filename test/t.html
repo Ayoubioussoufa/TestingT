@@ -10,61 +10,72 @@
     <link rel="stylesheet" href="t.css">  
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <!-- fluid to be added later on -->
-        <div class="container-fluid">
-          <!-- Logo -->
-          <a href="#"><img class="image" src="./logo.png"></a>
-          <!-- SideBar -->
-          <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel">
-            <!-- SideBar Header -->
-            <div class="offcanvas-header text-white border-bottom shadow-none">
-              <a href="#"><img class="image" src="./logo.png"></a>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-            </div>
-            <!-- SideBar Body -->
-            <div class="offcanvas-body">
-              <ul class="navbar-nav"> <!-- justify-content-center fs-6 flex-grow-1 pe-3 gap-2 -->
-                <!-- <li class="nav-item">
-                    <a href="#"><img class="image" src="./logo.png"></a>
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link fonts" href="#home"><strong>Home</strong></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fonts" href="#leaderboard"><strong>Leaderboard</strong></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fonts" href="#leaderboard"><strong>About Us</strong></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Toggle Button -->
-          <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+  <div class="contain">
+    <div class="friend-list">
+      <div class="friend-list-header">
+        <span>Friends</span>
+        <div class="actions">
+          <button class="btn btn-light" id="search-btn">
+            <i class="fas fa-search"></i>
           </button>
-          <!-- USER PROFILE -->
-          <button class="user">
-            <div class="d-flex flex-column justify-content-center align-items-center gap-2 flex-lg-row bot">
-              <div class="ProfileImage">
-  
-              </div>
-              <div class="UserProfile">
-                <a href="#" class="text-white text-decoration-one px-3 py-1 rounded-4 btn customBack"><strong>USER HERE</strong></a>
-              </div>
-            </div>
+          <button class="btn btn-light" id="add-btn">
+            <i class="bi bi-person-plus-fill"></i>
           </button>
         </div>
-      </nav>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+      </div>
+      <input type="text" class="form-control search-bar" id="search-bar" placeholder="Search friends...">
+      <input type="text" class="form-control add-friend-bar" id="add-friend-bar" placeholder="Search to add friends...">
+      <div class="friend" data-friend="Friend 1">Friend 1</div>
+      <div class="friend" data-friend="Friend 2">Friend 2</div>
+      <div class="friend" data-friend="Friend 3">Friend 3</div>
+    </div>
+  
+    <div class="conversation">
+      <h2>Conversation with <span id="friend-name"></span></h2>
+      <div id="conversation-content">
+        <!-- Conversation content will be dynamically loaded here -->
+      </div>
+      <button id="back-button">Back to Friends List</button>
+    </div>
+  </div>
+  <button class="btn btn-light toggle-btn" id="toggle-btn">Toggle Friend List</button>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-    <script src="test.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("toggle-btn");
+      const friendList = document.querySelector(".friend-list");
+      const conversation = document.querySelector(".conversation");
+    
+      toggleBtn.addEventListener("click", function () {
+        if (friendList.style.display === "none") {
+          friendList.style.display = "block";
+        } else {
+          friendList.style.display = "none";
+          conversation.style.display = "none"; 
+        }
+      });
+    
+      document.querySelectorAll(".friend").forEach(friend => {
+        friend.addEventListener("click", function () {
+          document.getElementById("friend-name").textContent = this.getAttribute("data-friend");
+          if (document.querySelector('.conversation').style.display == 'none') {
+            document.querySelector('.conversation').style.display = 'block';
+            document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
+            document.querySelector('.Text').style.display = 'none';
+        }
+        else
+            document.querySelector('.conversation').style.display = 'none';
+        });
+      });
+    
+      document.getElementById("back-button").addEventListener("click", function () {
+        friendList.style.display = "block";
+        conversation.style.display = "none";
+        document.querySelector('.Text').style.display = 'block';
+      });
+    });
+    
+    
+  </script>
 </body>
 </html>

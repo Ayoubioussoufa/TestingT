@@ -1,91 +1,133 @@
-.bubble {
-    display: flex !important;
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 85% 75% 78% 73% !important;
-    background: linear-gradient(
-        #cdd7f9,
-        #8fbcff40,
-        #b5e3ff7d,
-        #adc6ff17) !important;
-    border: 1px solid #0000ff36 !important;
-    animation: rotate 10s linear forwards infinite !important;
-}
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg) !important;
+.contain {
+    display: flex;
+    align-items: flex-start;
+    position: relative; /* Make contain relative for positioning conversation */
+  }
+  
+  .friend-list, .conversation {
+    width: 435px;
+    height: 600px;
+    margin: 150px 0px 0px 33px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 30px 40px;
+  }
+  
+  .friend-list {
+    margin-right: -10px; /* Space between friend list and conversation */
+  }
+  
+  .friend {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+  }
+  
+  .friend:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .conversation {
+    display: none; /* Initially hide the conversation div */
+    position: absolute; /* Position conversation on top */
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .friend-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .friend-list-header .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .friend-list-header .btn {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .friend-list-header .btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .search-bar, .add-friend-bar {
+    display: none;
+    margin-bottom: 20px;
+  }
+  
+  /* Custom scrollbar */
+  .friend-list {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.4) rgba(0, 0, 0, 0.1);
+  }
+  
+  .friend-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .friend-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+  }
+  
+  .friend-list::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .toggle-btn {
+    display: none; /* Hide the toggle button by default */
+  }
+  
+  @media (max-width: 989px) {
+    .contain {
+      flex-direction: column; /* Column layout for small screens */
     }
-    100% {
-        transform: rotate(360deg) !important;
+    
+    .friend-list, .conversation {
+      width: calc(100% - 66px);
+      margin: 20px 0;
     }
-}
-
-.navbar {
-    background-color: #f8f9fa; /* Change this to your preferred background color */
-    height: 120px !important; /* Set height to 120px */
-    margin-top: 20px !important; /* Gap between the window and the navbar */
-    margin-bottom: 30px !important; /* Optional: Additional gap below the navbar */
-}
-
-.navbar .image {
-    height: 40px !important;
-    margin-right: 20px !important;
-}
-
-.user {
-    margin-left: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-}
-
-.navbar .container-fluid {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    height: 100% !important;
-}
-
-.navbar .navbar-toggler {
-    order: 0 !important;
-    margin-right: 20px !important; /* Adjust margin as needed */
-}
-
-
-.navbar .sidebar .offcanvas-header {
-    background-color: #73b1f0 !important; /* Sidebar header background color */
-}
-
-.navbar .sidebar .offcanvas-header .image {
-    height: 30px !important;
-}
-
-.navbar .sidebar .offcanvas-body {
-    background-color: #73b1f0 !important; /* Sidebar body background color */
-}
-
-.navbar .sidebar .offcanvas-body .nav-link {
-    color: white !important; /* Sidebar link color */
-    padding: 10px 0 !important;
-}
-
-.navbar .sidebar .offcanvas-body .nav-link:hover {
-    background-color: #495057 !important; /* Sidebar link hover background color */
-    border-radius: 5px !important;
-}
-
-.navbar .user {
-    background: none !important;
-    border: none !important;
-}
-
-.navbar .user .customBack {
-    background-color: #007bff !important; /* Change this to your preferred button background color */
-    color: white !important;
-    font-weight: bold !important;
-    border: none !important;
-}
-
-.navbar .user .customBack:hover {
-    background-color: #0056b3 !important;
-}
+    
+    .toggle-btn {
+      display: block; /* Show toggle button on small screens */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+  }
+  
+  @media (min-width: 990px) {
+    .contain {
+      flex-direction: row; /* Row layout for large screens */
+    }
+    
+    .conversation {
+      display: block; /* Show conversation next to friend list on large screens */
+      position: static; /* Reset positioning */
+    }
+    
+    .toggle-btn {
+      display: none; /* Hide toggle button on large screens */
+    }
+  }
+  

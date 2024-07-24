@@ -21,10 +21,11 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./prestige-ocean-song-seraphine-league-of-legneds-4k-8y-1920x1080.jpg');
+    background-image: url('../img/prestige-ocean-song-seraphine-league-of-legneds-4k-8y-1920x1080.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 0;
 }
 
 .image {
@@ -42,16 +43,21 @@ body, html {
     height: auto;
     z-index: 1;
 }
+/*------------------------------*/
+
+.show-conversation .conversation {
+    display: block;
+}
 
 .contain {
     display: flex;
     align-items: flex-start;
-}
-
-.friend-list, .conversation {
+    position: relative; /* Make contain relative for positioning conversation */
+  }
+  
+  .friend-list, .conversation {
     width: 435px;
     height: 600px;
-    /* position: absolute; */
     margin: 150px 0px 0px 33px;
     overflow-y: auto;
     background: rgba(0, 0, 0, 0.1);
@@ -59,13 +65,14 @@ body, html {
     color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 30px 40px;
-}
-
-.friend-list {
+    z-index: 1;
+  }
+  
+  .friend-list {
     margin-right: -10px; /* Space between friend list and conversation */
-}
-
-.friend {
+  }
+  
+  .friend {
     padding: 15px;
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.01);
@@ -73,86 +80,82 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s;
     color: white;
-}
-
-.friend:hover {
+  }
+  
+  .friend:hover {
     background-color: rgba(0, 0, 0, 0.2);
-}
-
-.conversation {
-    display: none; /* Initially hide the conversation div */
-    z-index: 1;
-
-}
-
-.show-conversation .conversation {
-    display: block; /* Show the conversation when activated */
-}
-
-/*--------------------*/
-
-.friend-list-header {
+  }
+  
+  .conversation {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .friend-list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     font-size: 20px;
     color: white;
-}
-
-.friend-list-header .actions {
+  }
+  
+  .friend-list-header .actions {
     display: flex;
     gap: 10px;
-}
-
-.friend-list-header .btn {
+  }
+  
+  .friend-list-header .btn {
     background-color: rgba(0, 0, 0, 0.1);
     border: none;
     color: white;
     font-size: 14px;
     padding: 5px 10px;
-}
-
-.friend-list-header .btn:hover {
+  }
+  
+  .friend-list-header .btn:hover {
     background-color: rgba(0, 0, 0, 0.3);
-}
-
-.search-bar, .add-friend-bar {
+  }
+  
+  .search-bar, .add-friend-bar {
     display: none;
     margin-bottom: 20px;
-}
-
-/* Custom scrollbar */
-.friend-list {
+  }
+  
+  /* Custom scrollbar */
+  .friend-list {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.4) rgba(0, 0, 0, 0.1);
-}
-
-.friend-list::-webkit-scrollbar {
+  }
+  
+  .friend-list::-webkit-scrollbar {
     width: 8px;
-}
-
-.friend-list::-webkit-scrollbar-thumb {
+  }
+  
+  .friend-list::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
-}
-
-.friend-list::-webkit-scrollbar-track {
+  }
+  
+  .friend-list::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.1);
-}
+  }
+  
+  .toggle-btn {
+    display: none; /* Hide the toggle button by default */
+  }
+  
+/* ------------------------------------------------------------------------------*/
 
 .bubble {
     position: absolute;
     bottom: -100px;
     width: 20px;
     height: 20px;
-    /* background: linear-gradient(
-        #cdd7f9,
-        #19f5e340,
-        #b5e3ff7d,
-        #2bd4eb17); */
-    /* background: rgba(0, 255, 255, 0.6); */
     background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(173,216,230,0.3) 40%, rgba(173,216,230,0.2) 60%, rgba(255,255,255,0.1) 100%);
     border-radius: 85% 75% 78% 73%;
     opacity: 0;
@@ -188,14 +191,17 @@ body, html {
         transform: rotate(360deg);
     }
 }
+
 .Text {
     display: block;
     position: absolute;
     top: 35%;
     left: 26%;
-    width: 600px;
+    width: auto; /* Allow width to adjust automatically */
+    max-width: 600px; /* Set a maximum width */
     color: white;
     z-index: 0;
+    font-size: 14vw; /* Adjust font size relative to viewport width */
 }
 
 .Title {
@@ -275,75 +281,64 @@ body, html {
     }
 }
 
-/* .navbar .user .customBack:hover {
-    background-color: #0056b3 !important;
-} */
-
-/* .hex-button a {
-    text-decoration: none;
-    color: #B47BAF;
-}
-
-.hex-button {
-    position: absolute;
-    top: 70%;
-    left: 10%;
-    padding: 15px 100px;
-    text-align: center;
-    font-size: 20px;
-    color: #fff;
-    background-color: #EDC0E6;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    cursor: pointer;
-    overflow: hidden;
-    border: 2px solid rgb(247, 161, 228);
-} */
-
-/* .hex-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid white;
-    box-sizing: border-box;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    animation: borderAnimation 2s linear infinite;
-    pointer-events: none;
-} */
-
-/* @keyframes borderAnimation {
-    0% {
-        transform: translateX(-100%);
+@media (max-width: 989px) {
+    .contain {
+      flex-direction: column;
     }
-    100% {
-        transform: translateX(100%);
+    
+    .friend-list, .conversation {
+      width: calc(100% - 66px);
+      margin: 20px 0;
     }
-} */
 
-/* .ball {
-  position: absolute;
-  border-radius: 50%;
-  background-color: #f39999;
-  width: 20px;
-  height: 20px;
+    .toggle-btn {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    .Text {
+        display: none;
+    }
+
+    .play {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+  }
+  
+  @media (min-width: 990px) {
+    .contain {
+      flex-direction: row;
+    }
+
+    .friend-list {
+        display: block;
+    }
+    
+    .conversation {
+      /* display: block; */
+      position: static; /* Reset positioning */
+    }
+    
+    .toggle-btn {
+      display: none;
+    }
+
+    .Text {
+        font-size: 3vw;
+        left: 30%;
+      }
 }
 
-@media (min-width: 990px) {
-  .ball {
-      display: none !important;
-  }
-}
 
-@media (max-width: 991px) {
-  .video-container {
-      display: none !important;
+@media (max-width: 1585px) {
+    .Text {
+      display: none;
+    }
   }
-  .hex-button {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-} */

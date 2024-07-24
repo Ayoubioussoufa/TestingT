@@ -1,21 +1,34 @@
-document.querySelectorAll('.friend').forEach(friend => {
-    friend.addEventListener('click', function() {
-        const friendName = this.getAttribute('data-friend');
-        document.getElementById('friend-name').textContent = friendName;
-        // if (document.querySelector('.conversation').style.display == 'none')
-            document.querySelector('.conversation').style.display = 'block';
-        // else
-            // document.querySelector('.conversation').style.display = 'none';
-        // Load conversation content dynamically
-        document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
-        document.querySelector('.Text').style.display = 'none';
-    });
-});
+const toggleBtn = document.getElementById("toggle-btn");
+const friendList = document.querySelector(".friend-list");
+const conversation = document.querySelector(".conversation");
 
-document.getElementById('back-button').addEventListener('click', function() {
-    document.querySelector('.friend-list').style.display = 'block';
-    document.querySelector('.conversation').style.display = 'none';
-    document.querySelector('.Text').style.display = 'block';
+document.addEventListener("DOMContentLoaded", function () {
+    toggleBtn.addEventListener("click", function () {
+      if (friendList.style.display === "none") {
+        friendList.style.display = "block";
+      } else {
+        friendList.style.display = "none";
+        conversation.style.display = "none"; 
+      }
+    });
+  
+    document.querySelectorAll(".friend").forEach(friend => {
+      friend.addEventListener("click", function () {
+        // document.getElementById("friend-name").textContent = this.getAttribute("data-friend");
+        let friendName = "salam";
+        if (document.querySelector('.conversation').style.display == 'none') {
+          document.querySelector('.conversation').style.display = 'block';
+          document.getElementById('conversation-content').innerHTML = `<p>Chatting with ${friendName}...</p>`;
+      }
+      else
+          document.querySelector('.conversation').style.display = 'none';
+      });
+    });
+  
+    document.getElementById("back-button").addEventListener("click", function () {
+      friendList.style.display = "block";
+      conversation.style.display = "none";
+    });
 });
 
 document.getElementById('search-btn').addEventListener('click', function() {
@@ -31,15 +44,15 @@ document.getElementById('search-btn').addEventListener('click', function() {
 });
 
 document.getElementById('add-btn').addEventListener('click', function() {
-    if (document.getElementById('search-bar').style.display == 'block')
+    if (document.getElementById('add-friend-bar').style.display == 'block')
     {
         document.getElementById('search-bar').style.display = 'none';
         document.getElementById('add-friend-bar').style.display = 'none';
     }
     else
     {
-        document.getElementById('search-bar').style.display = 'block';
-        document.getElementById('add-friend-bar').style.display = 'none';
+        document.getElementById('search-bar').style.display = 'none';
+        document.getElementById('add-friend-bar').style.display = 'block';
     }
 });
 
@@ -56,3 +69,10 @@ function createBubble() {
 }
 
 setInterval(createBubble, 300);
+
+function handleResize() {
+  if (window.innerWidth > 990)
+    friendList.style.display = "block";
+}
+
+window.addEventListener("resize", handleResize); // TO BE REMOVED F PLAY AND FRIEND DISPLAY NONE fiha 
