@@ -22,7 +22,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/background.png');
+    /* background-image: url('../img/background.png'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -310,7 +310,7 @@ body, html {
   }
   
   .selected .btn-icon {
-    border: 2px solid #007bff; /* Highlight selected button */
+    border: 2px solid #f0f0f0; /* Highlight selected button */
   }
   
   .confirm-btn-container {
@@ -324,7 +324,7 @@ body, html {
     margin-top: 10px;
     font-size: 20px;
   }
-  
+
   /* .selected .btn-title {
     display: none;
   } */
