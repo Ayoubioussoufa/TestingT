@@ -1,0 +1,6 @@
+IT IS FEASIBLE TO SEND A TRANSACTION WITHOUT HAVING TO CHARGE CUSTOMERS FOR GAS
+HOW ?
+SIMPLY  HAVE PEOPLE SIGN A MESSAGE ON THE FRONT END FIRST.
+THE MSG AND SIGNATURE WOULD THEN BE ROUTED TO A CENTRALIZED BACKEND (OFF-CHAIN)
+THAT WOULD ESTABLISH A TRANSACTION AND INCLUDE THE PAYLOAD (MSG + SIGNATURE).
+this means that instead of the user's wallet, the app's wallet will cover gas costs. a smart contract will validate the signature's validity and perfom an activity on behalf of the user on the blockchain

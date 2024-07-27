@@ -305,52 +305,226 @@
 // }
 
 
-let get = function(arr, target, start, end) {
-    let mid = 0;
-    while (start <= end) {
-        mid = Math.floor(start + (end - start) / 2);
-        if (target > arr[mid])
-            start = mid + 1;
-        else if (arr[mid] > target)
-            end = mid - 1;
-        else
-            return mid;
+// let get = function(arr, target, start, end) {
+//     let mid = 0;
+//     while (start <= end) {
+//         mid = Math.floor(start + (end - start) / 2);
+//         if (target > arr[mid])
+//             start = mid + 1;
+//         else if (arr[mid] > target)
+//             end = mid - 1;
+//         else
+//             return mid;
+//     }
+//     return -1;
+// }
+
+// var pivot = function(nums) {
+//     let start = 0;
+//     let end = nums.length - 1;
+//     let mid = 0;
+//     while (start <= end) {
+//         mid = Math.floor(start + (end - start) / 2);
+//         if (mid < end && nums[mid] > nums[mid + 1])
+//             return mid;
+//         if (mid > start && nums[mid] < nums[mid - 1])
+//             return mid - 1;
+//         if (nums[start] >= nums[mid])
+//             end = mid - 1;
+//         else
+//             start = mid + 1;
+//     }
+//     return -1;
+// };
+
+
+// var search = function(nums, target) {
+//     let piv = pivot(nums);
+//     if (piv == -1) {
+//        return binarySearch(nums, target, 0, nums.length - 1);
+//     }
+//     let start = 0;
+//     let end = nums.length - 1;
+//     if (target >= nums[start])
+//         return get(nums, target, start, piv);
+//     return get(nums, target, piv + 1, end);
+// };
+
+// function binarySearch(nums, target, start, end) {
+//     while (start <= end) {
+//         let mid = Math.floor(start + (end - start) / 2);
+//         if (nums[mid] > target) {
+//             end = mid - 1;
+//         } else if (nums[mid] < target) {
+//             start = mid + 1;
+//         } else
+//             return mid;
+//     }
+//     return -1
+// }
+
+// let nums = [3,5,1];
+// let target = 5;
+
+// console.log(search(nums, target));
+
+// class Solution {
+//     /**
+//      * @param {number[]} nums
+//      * @param {number} target
+//      * @return {number}
+//      */
+//     search(nums, target) {
+//         let piv = this.pivot(nums);
+//         if (piv == -1) {
+//             return this.binarySearch(nums, target, 0, nums.length - 1);
+//         }
+//         let start = 0;
+//         let end = nums.length - 1;
+//         if (target >= nums[start]) {
+//             return this.get(nums, target, start, piv);
+//         }
+//         return this.get(nums, target, piv + 1, end);
+//     }
+
+//     /**
+//      * @param {number[]} arr
+//      * @param {number} target
+//      * @param {number} start
+//      * @param {number} end
+//      * @return {number}
+//      */
+//     get(arr, target, start, end) {
+//         let mid = 0;
+//         while (start <= end) {
+//             mid = Math.floor(start + (end - start) / 2);
+//             if (target > arr[mid])
+//                 start = mid + 1;
+//             else if (arr[mid] > target)
+//                 end = mid - 1;
+//             else
+//                 return mid;
+//         }
+//         return -1;
+//     }
+
+//     /**
+//      * @param {number[]} nums
+//      * @return {number}
+//      */
+//     pivot(nums) {
+//         let start = 0;
+//         let end = nums.length - 1;
+//         let mid = 0;
+//         while (start <= end) {
+//             mid = Math.floor(start + (end - start) / 2);
+//             if (mid < end && nums[mid] > nums[mid + 1])
+//                 return mid;
+//             if (mid > start && nums[mid] < nums[mid - 1])
+//                 return mid - 1;
+//             if (nums[start] >= nums[mid])
+//                 end = mid - 1;
+//             else
+//                 start = mid + 1;
+//         }
+//         return -1;
+//     }
+
+//     /**
+//      * @param {number[]} nums
+//      * @param {number} target
+//      * @param {number} start
+//      * @param {number} end
+//      * @return {number}
+//      */
+//     binarySearch(nums, target, start, end) {
+//         while (start <= end) {
+//             let mid = Math.floor(start + (end - start) / 2);
+//             if (nums[mid] > target) {
+//                 end = mid - 1;
+//             } else if (nums[mid] < target) {
+//                 start = mid + 1;
+//             } else
+//                 return mid;
+//         }
+//         return -1;
+//     }
+// }
+
+
+// var pivot = function(nums) {
+//     let start = 0;
+//     let end = nums.length - 1;
+//     let mid = 0;
+//     while (start <= end) {
+//         mid = Math.floor(start + (end - start) / 2);
+//         if (mid < end && nums[mid] > nums[mid + 1])
+//             return mid;
+//         if (mid > start && nums[mid] < nums[mid - 1])
+//             return mid - 1;
+//         if (nums[start] >= nums[mid])
+//             end = mid - 1;
+//         else
+//             start = mid + 1;
+//     }
+//     return -1;
+// };
+
+// let check = function(nums) {
+//     let occurence = 0;
+//     for (let i = 0; i < nums.length - 1; i++) {
+//         if (nums[i] > nums[i+1])
+//             occurence++;
+//     }
+//     console.log(occurence);
+//     nums[nums.length - 1] > nums[0] && occurence++;
+//     console.log(occurence);
+//     return occurence < 2 ? true : false;
+// }
+
+// var times = function(nums) {
+//     return pivot(nums) + 1;
+// }
+
+function maxValue(nums) {
+    let max = 0;
+    let maximumValue = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (maximumValue < nums[i])
+            maximumValue = nums[i];
+        max += nums[i];
     }
-    return -1;
+    return {max, maximumValue};
 }
 
-var pivot = function(nums) {
-    let start = 0;
-    let end = nums.length - 1;
-    let mid = 0;
-    while (start <= end) {
-        mid = Math.floor(start + (end - start) / 2);
-        if (nums[mid] > nums[mid + 1])
-            return mid;
-        else if (nums[mid] < nums[mid - 1])
-            return mid - 1;
-        else if (nums[start] > nums[mid])
-            end = mid - 1;
-        else
+function sum(nums, mid, k) {
+    let sum = 0;
+    let pieces = 1;
+    for (let num of nums) {
+        if (sum + num > mid) {
+            pieces++;
+            sum = num;
+        } else
+            sum += num;
+    }
+    return pieces;
+}
+
+var splitArray = function(nums, k) {
+    let values = maxValue(nums);
+    let start = values.maximumValue;
+    let end = values.max;
+    while (start < end) {
+        let mid = Math.floor(start + (end - start) / 2);
+        let pieces = sum(nums, mid, k);
+        if (pieces <= k) {
+            end = mid;
+        } else
             start = mid + 1;
     }
     return end;
 };
 
-
-var search = function(nums, target) {
-    let piv = pivot(nums);
-    let first = 0;
-    let second = 0;
-    let start = 0;
-    let end = nums.length - 1;
-    first = get(nums, target, start, piv);
-    if (first == -1)
-        second = get(nums, target, piv + 1, end);
-    return second;
-};
-
-let nums = [1, 3];
-let target = 3;
-
-console.log(search(nums, target));
+let nums = [1,2,3,4,5];
+let k = 1;
+console.log(splitArray(nums, k));
