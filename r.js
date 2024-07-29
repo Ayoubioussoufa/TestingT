@@ -486,45 +486,101 @@
 //     return pivot(nums) + 1;
 // }
 
-function maxValue(nums) {
-    let max = 0;
-    let maximumValue = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (maximumValue < nums[i])
-            maximumValue = nums[i];
-        max += nums[i];
-    }
-    return {max, maximumValue};
-}
+// function maxValue(nums) {
+//     let max = 0;
+//     let maximumValue = 0;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (maximumValue < nums[i])
+//             maximumValue = nums[i];
+//         max += nums[i];
+//     }
+//     return {max, maximumValue};
+// }
 
-function sum(nums, mid, k) {
+// function sum(nums, mid, k) {
+//     let sum = 0;
+//     let pieces = 1;
+//     for (let num of nums) {
+//         if (sum + num > mid) {
+//             pieces++;
+//             sum = num;
+//         } else
+//             sum += num;
+//     }
+//     return pieces;
+// }
+
+// var splitArray = function(nums, k) {
+//     let values = maxValue(nums);
+//     let start = values.maximumValue;
+//     let end = values.max;
+//     while (start < end) {
+//         let mid = Math.floor(start + (end - start) / 2);
+//         let pieces = sum(nums, mid, k);
+//         if (pieces <= k) {
+//             end = mid;
+//         } else
+//             start = mid + 1;
+//     }
+//     return end;
+// };
+
+// let nums = [1,2,3,4,5];
+// let k = 1;
+// console.log(splitArray(nums, k));
+
+// var searchMatrix = function(matrix, target) {
+//     if (matrix.length === 0 || matrix[0].length === 0) return false;
+//     let cols = matrix[0].length;
+//     let rows = matrix.length;
+//     let left = 0;
+//     let right = rows * cols - 1;
+//     while (left <= right) {
+//         let mid = Math.floor(left + (right - left) / 2);
+//         let midElement = matrix[Math.floor(mid / cols)][mid % cols];
+//         if (midElement < target) {
+//             left = mid + 1;
+//         } else if (midElement > target)
+//             right = mid - 1;
+//         else
+//             return true;
+//     }
+//     return false;
+// };
+
+
+// let matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]];
+// let target = 20;
+// console.log(searchMatrix(matrix, target));
+
+var minEatingSpeed = function(piles, h) {
+    let start = 1;
     let sum = 0;
-    let pieces = 1;
-    for (let num of nums) {
-        if (sum + num > mid) {
-            pieces++;
-            sum = num;
-        } else
-            sum += num;
+    let end = 0;
+    for (let i = 0; i < piles.length; i++) {
+        if (end < piles[i])
+            end = piles[i];
+        sum += piles[i];
     }
-    return pieces;
-}
-
-var splitArray = function(nums, k) {
-    let values = maxValue(nums);
-    let start = values.maximumValue;
-    let end = values.max;
-    while (start < end) {
-        let mid = Math.floor(start + (end - start) / 2);
-        let pieces = sum(nums, mid, k);
-        if (pieces <= k) {
-            end = mid;
-        } else
+    let res = 0;
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2);
+        let totalTime = 0;
+        for (let p of piles) {
+            totalTime += Math.ceil(p / mid);
+        }
+        if (totalTime > h)
             start = mid + 1;
+        else if (h >= totalTime)
+        {
+            end = mid - 1;
+            res = mid;
+        }
     }
-    return end;
+    return res;
 };
 
-let nums = [1,2,3,4,5];
-let k = 1;
-console.log(splitArray(nums, k));
+let piles = [30,11,23,4,20];
+let h = 6;
+
+console.log(minEatingSpeed(piles, h));
