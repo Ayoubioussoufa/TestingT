@@ -553,34 +553,106 @@
 // let target = 20;
 // console.log(searchMatrix(matrix, target));
 
-var minEatingSpeed = function(piles, h) {
-    let start = 1;
-    let sum = 0;
-    let end = 0;
-    for (let i = 0; i < piles.length; i++) {
-        if (end < piles[i])
-            end = piles[i];
-        sum += piles[i];
-    }
-    let res = 0;
-    while (start <= end) {
-        let mid = Math.floor((start + end) / 2);
-        let totalTime = 0;
-        for (let p of piles) {
-            totalTime += Math.ceil(p / mid);
+// var minEatingSpeed = function(piles, h) {
+//     let start = 1;
+//     let sum = 0;
+//     let end = 0;
+//     for (let i = 0; i < piles.length; i++) {
+//         if (end < piles[i])
+//             end = piles[i];
+//         sum += piles[i];
+//     }
+//     let res = 0;
+//     while (start <= end) {
+//         let mid = Math.floor((start + end) / 2);
+//         let totalTime = 0;
+//         for (let p of piles) {
+//             totalTime += Math.ceil(p / mid);
+//         }
+//         if (totalTime > h)
+//             start = mid + 1;
+//         else if (h >= totalTime)
+//         {
+//             end = mid - 1;
+//             res = mid;
+//         }
+//     }
+//     return res;
+// };
+
+// let piles = [30,11,23,4,20];
+// let h = 6;
+
+// console.log(minEatingSpeed(piles, h));
+
+// var findMedianSortedArrays = function(nums1, nums2) {
+//     let combinedArray = nums1.concat(nums2);
+
+//     // Sort the combined array
+//     combinedArray.sort((a, b) => a - b);
+//     let length = combinedArray.length;
+//     let mid = Math.floor((length) / 2);
+//     if (length % 2 == 0) {
+//         return (combinedArray[mid] + combinedArray[mid + 1]) / 2;
+//     }
+//     return combinedArray[mid];
+// };
+
+// let nums1 = [1, 3];
+// let nums2 = [2];
+
+// console.log(findMedianSortedArrays(nums1, nums2));
+
+// function holy(n) {
+//     console.log(n);
+// }
+
+// function recursion(n) {
+//     if (n == 5) {
+//         console.log(n);
+//         return;
+//     }
+//     console.log(n);
+//     recursion(n + 1); // 0 1 2 3 4
+//     return n;
+// }
+
+// console.log(recursion(0));
+
+// var isSubsequence = function(s, t) {
+//     let m = 0;
+//     let j = 0;
+//     if (!s.length)
+//         return true;
+//     for (let i = 0; i <= s.length - 1; i++) {
+//         while (j <= t.length - 1) {
+//             if (s[i] == t[j]) {
+//                 m++;
+//                 break;
+//             }
+//             j++;
+//         }
+//         j++;
+//     }
+//     console.log(t.length, s.length, m, j);
+//     return (m == s.length);
+// };
+// OR SIMPLY THIS 
+
+var isSubsequence = function(s, t) {
+    let sPointer = 0;
+    let tPointer = 0;
+    while (sPointer < s.length && tPointer < t.length) {
+        if (s[sPointer] == t[tPointer]) {
+            sPointer++;
         }
-        if (totalTime > h)
-            start = mid + 1;
-        else if (h >= totalTime)
-        {
-            end = mid - 1;
-            res = mid;
-        }
+        tPointer++;
     }
-    return res;
+    return (sPointer == s.length)
 };
 
-let piles = [30,11,23,4,20];
-let h = 6;
 
-console.log(minEatingSpeed(piles, h));
+let s = "rjufvjafbxnbgriwgokdgqdqewn";
+let t = "mjmqqjrmzkvhxlyruonekhhofpzzslupzojfuoztvzmmqvmlhgqxehojfowtrinbatjujaxekbcydldglkbxsqbbnrkhfdnpfbuaktupfftiljwpgglkjqunvithzlzpgikixqeuimmtbiskemplcvljqgvlzvnqxgedxqnznddkiujwhdefziydtquoudzxstpjjitmiimbjfgfjikkjycwgnpdxpeppsturjwkgnifinccvqzwlbmgpdaodzptyrjjkbqmgdrftfbwgimsmjpknuqtijrsnwvtytqqvookinzmkkkrkgwafohflvuedssukjgipgmypakhlckvizmqvycvbxhlljzejcaijqnfgobuhuiahtmxfzoplmmjfxtggwwxliplntkfuxjcnzcqsaagahbbneugiocexcfpszzomumfqpaiydssmihdoewahoswhlnpctjmkyufsvjlrflfiktndubnymenlmpyrhjxfdcq";
+
+console.log(isSubsequence(s, t));
