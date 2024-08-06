@@ -639,20 +639,21 @@
 // };
 // OR SIMPLY THIS 
 
-var isSubsequence = function(s, t) {
-    let sPointer = 0;
-    let tPointer = 0;
-    while (sPointer < s.length && tPointer < t.length) {
-        if (s[sPointer] == t[tPointer]) {
-            sPointer++;
-        }
-        tPointer++;
-    }
-    return (sPointer == s.length)
-};
+let sum = 0;
 
+function test(index, nums) {
+    let num = 0;
+    if (index == nums.length)
+        return num;
+    if (index < nums.length)
+        num++;
+    sum = test(index + 1, nums);
+    console.log(num, sum);
+    num += sum;
+    console.log(num, sum);
+    console.log("--------------------");
+    return num;
+}
 
-let s = "rjufvjafbxnbgriwgokdgqdqewn";
-let t = "mjmqqjrmzkvhxlyruonekhhofpzzslupzojfuoztvzmmqvmlhgqxehojfowtrinbatjujaxekbcydldglkbxsqbbnrkhfdnpfbuaktupfftiljwpgglkjqunvithzlzpgikixqeuimmtbiskemplcvljqgvlzvnqxgedxqnznddkiujwhdefziydtquoudzxstpjjitmiimbjfgfjikkjycwgnpdxpeppsturjwkgnifinccvqzwlbmgpdaodzptyrjjkbqmgdrftfbwgimsmjpknuqtijrsnwvtytqqvookinzmkkkrkgwafohflvuedssukjgipgmypakhlckvizmqvycvbxhlljzejcaijqnfgobuhuiahtmxfzoplmmjfxtggwwxliplntkfuxjcnzcqsaagahbbneugiocexcfpszzomumfqpaiydssmihdoewahoswhlnpctjmkyufsvjlrflfiktndubnymenlmpyrhjxfdcq";
-
-console.log(isSubsequence(s, t));
+let nums = [5,8,9,7,4,1,2];
+console.log(test(0, nums));
